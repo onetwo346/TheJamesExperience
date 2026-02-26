@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books - TheJamesExperience</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pages.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">TheJamesExperience</div>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="books.html" class="active">Books</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="live.html">Live Events</a></li>
+                <li><a href="community.html">Community</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-hero">
+        <div class="container">
+            <h1 class="page-title">My Books</h1>
+            <p class="page-subtitle">Explore stories that captivate, inspire, and transform</p>
+        </div>
+    </section>
+
+    <section class="books-filter">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-category="all">All Books</button>
+                <button class="filter-btn" data-category="fiction">Fiction</button>
+                <button class="filter-btn" data-category="mystery">Mystery</button>
+                <button class="filter-btn" data-category="romance">Romance</button>
+                <button class="filter-btn" data-category="series">Series</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="books-catalog">
+        <div class="container">
+            <div class="books-grid">
+                <div class="book-detail-card" data-category="fiction series">
+                    <div class="book-detail-cover">
+                        <div class="book-placeholder">Book 1</div>
+                        <div class="book-badge">Bestseller</div>
+                    </div>
+                    <div class="book-detail-info">
+                        <h3>The First Journey</h3>
+                        <p class="book-meta">Fiction • Series Book 1 • 2020</p>
+                        <p class="book-excerpt">An epic tale of discovery and adventure that will captivate your imagination. Follow the protagonist as they embark on a life-changing journey through uncharted territories.</p>
+                        <div class="book-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-text">4.8 (2,543 reviews)</span>
+                        </div>
+                        <div class="book-actions">
+                            <button class="btn btn-primary" onclick="alert('Add to cart functionality')">Add to Cart - $14.99</button>
+                            <button class="btn btn-secondary" onclick="toggleSample(this)">Read Sample</button>
+                            <button class="wishlist-btn" onclick="toggleWishlist(this)">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="sample-text" style="display: none;">
+                            <h4>Chapter 1: The Beginning</h4>
+                            <p>The morning sun cast long shadows across the cobblestone streets as Elena stepped out into the crisp autumn air. She had no idea that this ordinary Tuesday would mark the beginning of an extraordinary adventure...</p>
+                            <p><em>[Sample excerpt - Full book available for purchase]</em></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="book-detail-card" data-category="mystery">
+                    <div class="book-detail-cover">
+                        <div class="book-placeholder">Book 2</div>
+                        <div class="book-badge new">New Release</div>
+                    </div>
+                    <div class="book-detail-info">
+                        <h3>Shadows of Tomorrow</h3>
+                        <p class="book-meta">Mystery • Standalone • 2023</p>
+                        <p class="book-excerpt">A thrilling mystery that keeps you guessing until the very last page. Detective Morgan faces the most challenging case of their career in this gripping psychological thriller.</p>
+                        <div class="book-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-text">4.9 (1,892 reviews)</span>
+                        </div>
+                        <div class="book-actions">
+                            <button class="btn btn-primary" onclick="alert('Add to cart functionality')">Add to Cart - $16.99</button>
+                            <button class="btn btn-secondary" onclick="toggleSample(this)">Read Sample</button>
+                            <button class="wishlist-btn" onclick="toggleWishlist(this)">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="sample-text" style="display: none;">
+                            <h4>Prologue</h4>
+                            <p>The body was found at 3:47 AM, precisely when the security cameras mysteriously went offline. Detective Morgan knew immediately this was no ordinary case...</p>
+                            <p><em>[Sample excerpt - Full book available for purchase]</em></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="book-detail-card" data-category="romance">
+                    <div class="book-detail-cover">
+                        <div class="book-placeholder">Book 3</div>
+                    </div>
+                    <div class="book-detail-info">
+                        <h3>Hearts Unbound</h3>
+                        <p class="book-meta">Romance • Standalone • 2021</p>
+                        <p class="book-excerpt">A heartwarming story of love, loss, and redemption. Two souls find each other in the most unexpected circumstances, proving that love knows no boundaries.</p>
+                        <div class="book-rating">
+                            <span class="stars">★★★★☆</span>
+                            <span class="rating-text">4.6 (3,201 reviews)</span>
+                        </div>
+                        <div class="book-actions">
+                            <button class="btn btn-primary" onclick="alert('Add to cart functionality')">Add to Cart - $13.99</button>
+                            <button class="btn btn-secondary" onclick="toggleSample(this)">Read Sample</button>
+                            <button class="wishlist-btn" onclick="toggleWishlist(this)">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="sample-text" style="display: none;">
+                            <h4>Chapter 1</h4>
+                            <p>Sarah never believed in second chances until the day she walked into that small café on the corner of Fifth and Main...</p>
+                            <p><em>[Sample excerpt - Full book available for purchase]</em></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="book-detail-card" data-category="fiction series">
+                    <div class="book-detail-cover">
+                        <div class="book-placeholder">Book 4</div>
+                        <div class="book-badge">Award Winner</div>
+                    </div>
+                    <div class="book-detail-info">
+                        <h3>The Final Chapter</h3>
+                        <p class="book-meta">Fiction • Series Book 4 • 2024</p>
+                        <p class="book-excerpt">The stunning conclusion to the beloved series. All questions are answered, all threads are woven together in this epic finale that will leave you breathless.</p>
+                        <div class="book-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-text">5.0 (4,127 reviews)</span>
+                        </div>
+                        <div class="book-actions">
+                            <button class="btn btn-primary" onclick="alert('Add to cart functionality')">Add to Cart - $17.99</button>
+                            <button class="btn btn-secondary" onclick="toggleSample(this)">Read Sample</button>
+                            <button class="wishlist-btn" onclick="toggleWishlist(this)">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="sample-text" style="display: none;">
+                            <h4>Final Chapter - Part 1</h4>
+                            <p>Everything had led to this moment. Elena stood at the precipice of destiny, knowing that her next choice would determine the fate of everything she held dear...</p>
+                            <p><em>[Sample excerpt - Full book available for purchase]</em></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Readers Are Saying</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Absolutely captivating! I couldn't put it down. James has a unique ability to create characters that feel like real people."</p>
+                    <p class="testimonial-author">— Sarah M.</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"The best series I've read in years. Each book gets better than the last. Can't wait for the next release!"</p>
+                    <p class="testimonial-author">— Michael R.</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"A masterpiece of storytelling. The plot twists kept me guessing until the very end. Highly recommended!"</p>
+                    <p class="testimonial-author">— Jennifer L.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>TheJamesExperience</h3>
+                    <p>Where stories come alive and readers become part of the journey.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="YouTube">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="#fff"></polygon>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="books.html">Books</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="live.html">Live Events</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="community.html">Reader's Corner</a></li>
+                        <li><a href="community.html#forums">Forums</a></li>
+                        <li><a href="community.html#spotlight">Reader Spotlight</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 TheJamesExperience. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button class="scroll-to-top" id="scrollToTop">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </button>
+
+    <script src="script.js"></script>
+    <script src="books.js"></script>
+</body>
+</html>
