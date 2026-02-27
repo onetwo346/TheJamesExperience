@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             blogCards.forEach(card => {
                 if (category === 'all') {
-                    card.style.display = 'block';
+                    card.style.display = '';
                     setTimeout(() => {
                         card.style.opacity = '1';
                         card.style.transform = 'translateY(0)';
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 } else {
                     const cardCategory = card.getAttribute('data-category');
                     if (cardCategory === category) {
-                        card.style.display = 'block';
+                        card.style.display = '';
                         setTimeout(() => {
                             card.style.opacity = '1';
                             card.style.transform = 'translateY(0)';

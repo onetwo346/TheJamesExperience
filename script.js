@@ -245,6 +245,45 @@ document.addEventListener('DOMContentLoaded', function() {
         document.head.appendChild(style);
     }
 
+    // ========== ROTATING QUOTES ==========
+    const quoteBannerText = document.getElementById('quoteBannerText');
+    if (quoteBannerText) {
+        const quotes = [
+            "Every story is a doorway — step through, and discover a world you never knew existed.",
+            "Words have the power to build worlds, break hearts, and mend souls all at once.",
+            "The best stories aren't written — they're lived first, then put into words.",
+            "A reader lives a thousand lives before he dies. The man who never reads lives only one.",
+            "Writing is painting with invisible ink — only those who truly look can see the colors.",
+            "Every character I create carries a piece of my soul and a fragment of yours.",
+            "Books don't just tell stories — they whisper secrets the universe wants you to hear.",
+            "The magic of storytelling is that it turns strangers into family.",
+            "I write not to escape reality, but to show you a deeper version of it.",
+            "Between the lines of every story lies a truth waiting to be discovered.",
+            "A pen is mightier than a sword, but a story is mightier than both.",
+            "The pages may end, but a great story never stops living inside you.",
+            "Every blank page is a promise — a chance to create something that didn't exist before.",
+            "Stories connect us across time, space, and every difference we think divides us.",
+            "The best adventures begin with a single sentence and an open heart.",
+            "Writing isn't a hobby — it's how I make sense of this beautiful, chaotic world.",
+            "When you read my words, we share the same heartbeat for a moment in time.",
+            "Fiction is the lie that tells the truth better than facts ever could.",
+            "I don't choose the stories — they choose me. I just hold the pen.",
+            "Every ending I write is really a beginning in disguise."
+        ];
+        let quoteIndex = 0;
+
+        setInterval(() => {
+            quoteIndex = (quoteIndex + 1) % quotes.length;
+            quoteBannerText.style.opacity = '0';
+            quoteBannerText.style.transform = 'translateY(8px)';
+            setTimeout(() => {
+                quoteBannerText.textContent = quotes[quoteIndex];
+                quoteBannerText.style.opacity = '1';
+                quoteBannerText.style.transform = 'translateY(0)';
+            }, 400);
+        }, 10000);
+    }
+
     // ========== SMOOTH ANCHOR LINKS ==========
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {

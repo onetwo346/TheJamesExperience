@@ -313,6 +313,7 @@ h1, h2, h3, h4, h5, h6 {
     background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,255,255,0.7));
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     background-clip: text;
+    transition: opacity 0.4s ease, transform 0.4s ease;
 }
 .quote-banner-author {
     font-family: 'Caveat', cursive; font-size: 1.2rem;
@@ -320,7 +321,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ========== SECTION HEADERS ========== */
-.section-header { text-align: center; margin-bottom: 2rem; }
+.section-header { text-align: center; margin-bottom: 1.5rem; }
 .section-tag {
     display: inline-flex; align-items: center; gap: 0.4rem;
     padding: 0.35rem 1rem; border-radius: var(--radius-full);
@@ -330,23 +331,23 @@ h1, h2, h3, h4, h5, h6 {
 }
 .section-tag i { font-size: 0.7rem; }
 .section-title {
-    font-size: 1.8rem; margin-bottom: 0.5rem; color: var(--dark-color);
+    font-size: 1.4rem; margin-bottom: 0.4rem; color: var(--dark-color);
     font-weight: 800; letter-spacing: -0.3px;
 }
 .section-subtitle {
-    color: var(--text-light); font-size: 0.95rem; max-width: 500px;
+    color: var(--text-light); font-size: 0.85rem; max-width: 500px;
     margin: 0 auto;
 }
 .section-cta { text-align: center; margin-top: 1.5rem; }
 
 /* ========== FEATURED BOOKS ========== */
-.featured-books { padding: 3rem 0; background: var(--bg-white); }
+.featured-books { padding: 2rem 0; background: var(--bg-white); }
 .book-carousel { position: relative; padding: 0 50px; }
 .carousel-container { overflow: hidden; border-radius: var(--radius); }
-.carousel-track { display: flex; gap: 1.2rem; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+.carousel-track { display: flex; gap: 0.8rem; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
 .book-card {
-    min-width: calc(33.333% - 1rem); background: var(--bg-white);
-    border-radius: var(--radius); padding: 0; overflow: hidden;
+    min-width: calc(33.333% - 0.6rem); background: var(--bg-white);
+    border-radius: var(--radius-sm); padding: 0; overflow: hidden;
     box-shadow: var(--shadow-sm); transition: var(--transition);
     cursor: pointer; position: relative; border: 1px solid var(--border-color);
 }
@@ -355,15 +356,15 @@ h1, h2, h3, h4, h5, h6 {
     border-color: rgba(244, 162, 97, 0.2);
 }
 .book-card-badge {
-    position: absolute; top: 12px; left: 12px; z-index: 5;
-    padding: 0.3rem 0.8rem; border-radius: var(--radius-full);
+    position: absolute; top: 8px; left: 8px; z-index: 5;
+    padding: 0.2rem 0.6rem; border-radius: var(--radius-full);
     background: var(--accent-color); color: white;
-    font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+    font-size: 0.6rem; font-weight: 700; text-transform: uppercase;
     letter-spacing: 0.5px; box-shadow: 0 2px 8px rgba(42, 157, 143, 0.3);
 }
 .book-card-badge.bestseller { background: var(--secondary-color); box-shadow: 0 2px 8px rgba(231, 111, 81, 0.3); }
 .book-cover {
-    width: 100%; aspect-ratio: 2/2.2; overflow: hidden;
+    width: 100%; aspect-ratio: 3/2; overflow: hidden;
     position: relative;
 }
 .book-overlay {
@@ -388,25 +389,25 @@ h1, h2, h3, h4, h5, h6 {
     display: flex; align-items: center; justify-content: center;
     color: white; font-size: 0.9rem; font-weight: 600;
 }
-.book-info { padding: 0.85rem; }
+.book-info { padding: 0.6rem; }
 .book-rating {
-    color: #f4a261; font-size: 0.7rem; margin-bottom: 0.4rem;
+    color: #f4a261; font-size: 0.6rem; margin-bottom: 0.25rem;
     display: flex; align-items: center; gap: 0.15rem;
 }
 .book-rating span {
     color: var(--text-light); font-weight: 600; margin-left: 0.3rem;
 }
 .book-title {
-    font-size: 0.9rem; margin-bottom: 0.3rem; color: var(--dark-color);
+    font-size: 0.8rem; margin-bottom: 0.2rem; color: var(--dark-color);
     line-height: 1.3;
 }
 .book-description {
-    color: var(--text-light); font-size: 0.78rem;
-    margin-bottom: 0.6rem; line-height: 1.4;
+    color: var(--text-light); font-size: 0.7rem;
+    margin-bottom: 0.4rem; line-height: 1.35;
 }
 .book-link {
     color: var(--primary-color); text-decoration: none; font-weight: 600;
-    font-size: 0.8rem; display: inline-flex; align-items: center; gap: 0.3rem;
+    font-size: 0.72rem; display: inline-flex; align-items: center; gap: 0.3rem;
     transition: var(--transition);
 }
 .book-link:hover { color: var(--secondary-color); gap: 0.5rem; }
@@ -435,12 +436,12 @@ h1, h2, h3, h4, h5, h6 {
 .dot.active { background: var(--primary-color); width: 24px; border-radius: 4px; }
 
 /* ========== QUICK LINKS ========== */
-.quick-links { padding: 3rem 0; background: var(--bg-light); }
+.quick-links { padding: 2rem 0; background: var(--bg-light); }
 .quick-links-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;
 }
 .quick-link-card {
-    background: var(--bg-white); padding: 2rem 1.5rem; border-radius: var(--radius-lg);
+    background: var(--bg-white); padding: 1.2rem 1rem; border-radius: var(--radius);
     text-align: center; box-shadow: var(--shadow-sm); transition: var(--transition);
     border: 1px solid var(--border-color); position: relative; overflow: hidden;
 }
@@ -455,11 +456,11 @@ h1, h2, h3, h4, h5, h6 {
     border-color: rgba(244, 162, 97, 0.15);
 }
 .quick-link-icon {
-    width: 56px; height: 56px; margin: 0 auto 1rem;
+    width: 42px; height: 42px; margin: 0 auto 0.6rem;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    border-radius: 16px; display: flex; align-items: center; justify-content: center;
-    color: white; font-size: 1.3rem;
-    box-shadow: 0 6px 20px rgba(244, 162, 97, 0.25);
+    border-radius: 12px; display: flex; align-items: center; justify-content: center;
+    color: white; font-size: 1rem;
+    box-shadow: 0 4px 15px rgba(244, 162, 97, 0.25);
     transition: var(--transition);
 }
 .quick-link-card:hover .quick-link-icon { transform: scale(1.1) rotate(-5deg); }
@@ -469,16 +470,16 @@ h1, h2, h3, h4, h5, h6 {
     50% { box-shadow: 0 6px 30px rgba(231, 111, 81, 0.5); }
 }
 .quick-link-card h3 {
-    font-size: 1.1rem; margin-bottom: 0.4rem; color: var(--dark-color);
+    font-size: 0.9rem; margin-bottom: 0.25rem; color: var(--dark-color);
 }
 .quick-link-card p {
-    color: var(--text-light); margin-bottom: 1.2rem; font-size: 0.9rem; line-height: 1.5;
+    color: var(--text-light); margin-bottom: 0.75rem; font-size: 0.78rem; line-height: 1.4;
 }
 .quick-link-btn {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    padding: 0.65rem 1.5rem; background: var(--accent-color); color: white;
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    padding: 0.45rem 1rem; background: var(--accent-color); color: white;
     text-decoration: none; border-radius: var(--radius-full);
-    font-weight: 600; font-size: 0.85rem; transition: var(--transition);
+    font-weight: 600; font-size: 0.75rem; transition: var(--transition);
 }
 .quick-link-btn:hover {
     background: var(--dark-color); transform: translateY(-2px);
@@ -488,13 +489,13 @@ h1, h2, h3, h4, h5, h6 {
 .quick-link-btn:hover i { transform: translateX(3px); }
 
 /* ========== TESTIMONIALS HOME ========== */
-.testimonials-home { padding: 3rem 0; background: var(--bg-white); }
+.testimonials-home { padding: 2rem 0; background: var(--bg-white); }
 .testimonial-slider { overflow: hidden; }
 .testimonial-track {
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
 }
 .testimonial-card-home {
-    background: var(--bg-light); padding: 1.5rem; border-radius: var(--radius-lg);
+    background: var(--bg-light); padding: 1rem; border-radius: var(--radius);
     border: 1px solid var(--border-color); transition: var(--transition);
     position: relative;
 }
@@ -512,27 +513,27 @@ h1, h2, h3, h4, h5, h6 {
     display: flex; gap: 0.15rem;
 }
 .testimonial-quote {
-    font-size: 0.92rem; line-height: 1.6; color: var(--text-dark);
-    margin-bottom: 1rem; font-style: italic;
+    font-size: 0.82rem; line-height: 1.5; color: var(--text-dark);
+    margin-bottom: 0.75rem; font-style: italic;
 }
 .testimonial-author-info {
     display: flex; align-items: center; gap: 0.75rem;
 }
 .testimonial-avatar {
-    width: 40px; height: 40px; border-radius: 50%;
+    width: 32px; height: 32px; border-radius: 50%;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     display: flex; align-items: center; justify-content: center;
-    color: white; font-weight: 700; font-size: 0.8rem;
+    color: white; font-weight: 700; font-size: 0.65rem;
 }
-.testimonial-name { font-weight: 600; font-size: 0.85rem; color: var(--dark-color); }
-.testimonial-role { font-size: 0.75rem; color: var(--text-light); }
+.testimonial-name { font-weight: 600; font-size: 0.78rem; color: var(--dark-color); }
+.testimonial-role { font-size: 0.65rem; color: var(--text-light); }
 
 /* ========== VIDEO SECTION ========== */
-.welcome-video { padding: 3rem 0; background: var(--bg-light); }
+.welcome-video { padding: 2rem 0; background: var(--bg-light); }
 .video-container {
-    max-width: 800px; margin: 0 auto; aspect-ratio: 16/9;
-    background: var(--dark-color); border-radius: var(--radius-lg);
-    overflow: hidden; box-shadow: var(--shadow-xl); position: relative;
+    max-width: 650px; margin: 0 auto; aspect-ratio: 16/9;
+    background: var(--dark-color); border-radius: var(--radius);
+    overflow: hidden; box-shadow: var(--shadow-lg); position: relative;
 }
 .video-placeholder {
     width: 100%; height: 100%; display: flex; flex-direction: column;
@@ -556,7 +557,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ========== NEWSLETTER ========== */
 .newsletter {
-    padding: 3rem 0; position: relative; overflow: hidden;
+    padding: 2rem 0; position: relative; overflow: hidden;
     background: linear-gradient(135deg, var(--dark-color) 0%, #1a3a4a 50%, var(--accent-color) 100%);
     color: white;
 }
@@ -574,10 +575,10 @@ h1, h2, h3, h4, h5, h6 {
     background-clip: text;
 }
 .newsletter-content h2 {
-    font-size: 1.8rem; margin-bottom: 0.6rem; font-weight: 800;
+    font-size: 1.4rem; margin-bottom: 0.5rem; font-weight: 800;
 }
 .newsletter-content > p {
-    font-size: 0.95rem; margin-bottom: 1.5rem; opacity: 0.85; line-height: 1.6;
+    font-size: 0.85rem; margin-bottom: 1.2rem; opacity: 0.85; line-height: 1.5;
 }
 .newsletter-form {
     display: flex; gap: 0.75rem; max-width: 500px; margin: 0 auto 1rem;
@@ -731,10 +732,38 @@ h1, h2, h3, h4, h5, h6 {
     .author-photo-placeholder { max-width: 230px; }
     .quote-banner { padding: 1.5rem 0; }
     .quote-banner-text { font-size: 1.2rem; }
-    .book-card { min-width: calc(50% - 1rem); }
+    /* Book cards — 2 per row, small */
+    .featured-books { padding: 1.5rem 0; }
+    .book-carousel { padding: 0 6px; }
+    .carousel-btn { display: none; }
+    .carousel-track { gap: 0.5rem; display: grid; grid-template-columns: 1fr 1fr; }
+    .book-card { min-width: 0; border-radius: 8px; }
+    .book-cover { aspect-ratio: 3/2; }
+    .book-overlay { display: none; }
+    .book-info { padding: 0.5rem; }
+    .book-rating { font-size: 0.55rem; margin-bottom: 0.2rem; }
+    .book-title { font-size: 0.75rem; margin-bottom: 0.15rem; }
+    .book-description { font-size: 0.65rem; margin-bottom: 0.3rem; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .book-link { font-size: 0.65rem; }
+    .book-card-badge { font-size: 0.55rem; padding: 0.15rem 0.45rem; top: 6px; left: 6px; }
+
+    /* Quick links — 2 per row */
+    .quick-links-grid { grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+    .quick-link-card { padding: 1rem 0.75rem; border-radius: 10px; }
+    .quick-link-icon { width: 36px; height: 36px; border-radius: 10px; font-size: 0.9rem; margin-bottom: 0.5rem; }
+    .quick-link-card h3 { font-size: 0.8rem; margin-bottom: 0.2rem; }
+    .quick-link-card p { font-size: 0.68rem; margin-bottom: 0.6rem; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .quick-link-btn { padding: 0.4rem 0.9rem; font-size: 0.68rem; }
+
+    /* Testimonials — compact */
     .testimonial-track { grid-template-columns: 1fr; }
+    .testimonial-card-home { padding: 0.85rem; }
+    .testimonial-quote { font-size: 0.78rem; line-height: 1.4; margin-bottom: 0.6rem; }
+    .testimonial-avatar { width: 30px; height: 30px; font-size: 0.6rem; }
+    .testimonial-name { font-size: 0.72rem; }
+    .testimonial-role { font-size: 0.6rem; }
+
     .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
-    .carousel-btn { width: 36px; height: 36px; }
     .nav-cta { margin: 0.3rem 1rem; display: flex; justify-content: center; }
 }
 
@@ -767,45 +796,50 @@ h1, h2, h3, h4, h5, h6 {
     .section-cta { margin-top: 1rem; }
     .btn-outline { padding: 0.5rem 1.2rem; font-size: 0.78rem; }
 
-    /* Featured books super compact */
-    .featured-books { padding: 1.5rem 0; }
-    .book-carousel { padding: 0 8px; }
+    /* Featured books — 2 per row, tiny */
+    .featured-books { padding: 1rem 0; }
+    .book-carousel { padding: 0 4px; }
     .carousel-btn { display: none; }
-    .book-card { min-width: 100%; border-radius: 10px; }
-    .book-cover { aspect-ratio: 2/1.5; }
-    .book-info { padding: 0.6rem; }
-    .book-rating { font-size: 0.6rem; margin-bottom: 0.25rem; }
-    .book-title { font-size: 0.8rem; margin-bottom: 0.2rem; }
-    .book-description { font-size: 0.7rem; margin-bottom: 0.4rem; line-height: 1.3; }
-    .book-link { font-size: 0.7rem; }
-    .book-card-badge { font-size: 0.6rem; padding: 0.2rem 0.6rem; top: 8px; left: 8px; }
-    .carousel-dots { margin-top: 0.75rem; }
-    .dot { width: 6px; height: 6px; }
-    .dot.active { width: 18px; }
+    .carousel-track { gap: 0.5rem; display: grid; grid-template-columns: 1fr 1fr; }
+    .book-card { min-width: 0; border-radius: 8px; }
+    .book-cover { aspect-ratio: 3/2; }
+    .book-overlay { display: none; }
+    .book-info { padding: 0.4rem 0.5rem; }
+    .book-rating { font-size: 0.5rem; margin-bottom: 0.15rem; }
+    .book-rating span { font-size: 0.5rem; }
+    .book-title { font-size: 0.7rem; margin-bottom: 0.15rem; }
+    .book-description { font-size: 0.6rem; margin-bottom: 0.3rem; line-height: 1.25; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .book-link { font-size: 0.6rem; }
+    .book-card-badge { font-size: 0.5rem; padding: 0.15rem 0.4rem; top: 5px; left: 5px; }
+    .carousel-dots { margin-top: 0.5rem; }
+    .dot { width: 5px; height: 5px; }
+    .dot.active { width: 14px; }
 
-    /* Quick links super compact */
-    .quick-links { padding: 1.5rem 0; }
-    .quick-links-grid { grid-template-columns: 1fr; gap: 0.75rem; }
-    .quick-link-card { padding: 1.2rem 1rem; border-radius: 12px; }
-    .quick-link-icon { width: 42px; height: 42px; border-radius: 12px; font-size: 1rem; margin-bottom: 0.6rem; }
-    .quick-link-card h3 { font-size: 0.9rem; margin-bottom: 0.25rem; }
-    .quick-link-card p { font-size: 0.78rem; margin-bottom: 0.75rem; }
-    .quick-link-btn { padding: 0.5rem 1.1rem; font-size: 0.75rem; }
+    /* Quick links — 2 per row, tiny */
+    .quick-links { padding: 1rem 0; }
+    .quick-links-grid { grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+    .quick-link-card { padding: 0.75rem 0.6rem; border-radius: 10px; }
+    .quick-link-icon { width: 32px; height: 32px; border-radius: 8px; font-size: 0.8rem; margin-bottom: 0.4rem; }
+    .quick-link-card h3 { font-size: 0.72rem; margin-bottom: 0.15rem; }
+    .quick-link-card p { font-size: 0.6rem; margin-bottom: 0.5rem; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .quick-link-btn { padding: 0.35rem 0.7rem; font-size: 0.6rem; }
 
-    /* Testimonials compact */
-    .testimonials-home { padding: 1.5rem 0; }
-    .testimonial-card-home { padding: 1rem; border-radius: 12px; }
-    .testimonial-stars { font-size: 0.65rem; margin-bottom: 0.5rem; }
-    .testimonial-quote { font-size: 0.8rem; line-height: 1.4; margin-bottom: 0.75rem; }
-    .testimonial-avatar { width: 32px; height: 32px; font-size: 0.65rem; }
-    .testimonial-name { font-size: 0.78rem; }
-    .testimonial-role { font-size: 0.65rem; }
-    .testimonial-card-home::before { font-size: 2.5rem; }
+    /* Testimonials — tiny */
+    .testimonials-home { padding: 1rem 0; }
+    .testimonial-card-home { padding: 0.7rem; border-radius: 10px; }
+    .testimonial-stars { font-size: 0.55rem; margin-bottom: 0.3rem; }
+    .testimonial-quote { font-size: 0.68rem; line-height: 1.35; margin-bottom: 0.5rem; }
+    .testimonial-avatar { width: 26px; height: 26px; font-size: 0.55rem; }
+    .testimonial-author-info { gap: 0.5rem; }
+    .testimonial-name { font-size: 0.65rem; }
+    .testimonial-role { font-size: 0.55rem; }
+    .testimonial-card-home::before { font-size: 2rem; top: 5px; right: 10px; }
 
-    /* Video compact */
-    .welcome-video { padding: 1.5rem 0; }
-    .video-play-btn { width: 50px; height: 50px; font-size: 1.1rem; }
-    .video-placeholder p { font-size: 0.75rem; }
+    /* Video tiny */
+    .welcome-video { padding: 1rem 0; }
+    .video-container { border-radius: 10px; }
+    .video-play-btn { width: 40px; height: 40px; font-size: 0.9rem; }
+    .video-placeholder p { font-size: 0.65rem; }
 
     /* Newsletter compact */
     .newsletter { padding: 2rem 0; }
