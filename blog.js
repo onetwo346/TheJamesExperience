@@ -1,4 +1,15 @@
 document.addEventListener('DOMContentLoaded', function() {
+
+    // ========== READ MORE EXPAND/COLLAPSE ==========
+    document.querySelectorAll('.read-more').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const card = this.closest('.blog-card');
+            const para = card.querySelector('.blog-content p');
+            const isExpanded = para.classList.toggle('expanded');
+            this.textContent = isExpanded ? 'Read Less ↑' : 'Read More →';
+        });
+    });
     const categoryButtons = document.querySelectorAll('.category-btn');
     const blogCards = document.querySelectorAll('.blog-card');
 

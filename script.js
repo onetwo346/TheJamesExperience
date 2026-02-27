@@ -284,6 +284,79 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 10000);
     }
 
+    // ========== ROTATING TESTIMONIALS ==========
+    const testimonialTrack = document.getElementById('testimonialTrack');
+    if (testimonialTrack) {
+        const allTestimonials = [
+            { stars: 5, quote: '"James has an incredible way of pulling you into his stories. I couldn\'t put it down!"', initials: 'SK', name: 'Sarah K.', role: 'Avid Reader' },
+            { stars: 5, quote: '"Every book is a masterpiece. The character depth and plot twists are unmatched."', initials: 'MR', name: 'Michael R.', role: 'Book Reviewer' },
+            { stars: 4.5, quote: '"The live events and community make this more than just reading. It\'s an experience!"', initials: 'AL', name: 'Amanda L.', role: 'Community Member' },
+            { stars: 5, quote: '"I stayed up until 3am finishing the last chapter. Absolutely gripping from start to finish."', initials: 'TJ', name: 'Tanya J.', role: 'Loyal Fan' },
+            { stars: 5, quote: '"James writes with such emotion and honesty. You feel every word deeply."', initials: 'BW', name: 'Brandon W.', role: 'Literary Enthusiast' },
+            { stars: 5, quote: '"I\'ve recommended his books to everyone I know. Pure storytelling genius."', initials: 'CM', name: 'Clara M.', role: 'Book Club Host' },
+            { stars: 4.5, quote: '"The way he builds characters feels so real — like you\'ve known them your whole life."', initials: 'RP', name: 'Rachel P.', role: 'Fiction Lover' },
+            { stars: 5, quote: '"Each page turned is a reminder of why I fell in love with reading."', initials: 'DS', name: 'Daniel S.', role: 'English Teacher' },
+            { stars: 5, quote: '"James doesn\'t just tell stories — he creates worlds you never want to leave."', initials: 'NB', name: 'Nina B.', role: 'Bookstagrammer' },
+            { stars: 5, quote: '"The plot twists hit differently. I had to re-read the ending three times!"', initials: 'KO', name: 'Kevin O.', role: 'Thriller Fan' },
+            { stars: 4.5, quote: '"His writing style is effortless yet deeply moving. A rare talent."', initials: 'FN', name: 'Fatima N.', role: 'Book Critic' },
+            { stars: 5, quote: '"Bought all his books in one sitting after reading the first chapter. No regrets!"', initials: 'HG', name: 'Henry G.', role: 'New Reader' },
+            { stars: 5, quote: '"The community around his work is just as beautiful as the books themselves."', initials: 'PE', name: 'Priya E.', role: 'Community Member' },
+            { stars: 5, quote: '"I never cry at books. James made me cry at books. 10/10 would cry again."', initials: 'LT', name: 'Laura T.', role: 'Emotional Reader' },
+            { stars: 4.5, quote: '"Every release feels like an event. I count down the days every time."', initials: 'ZM', name: 'Zack M.', role: 'Superfan' },
+            { stars: 5, quote: '"His prose is poetry. I highlight something profound on every single page."', initials: 'AK', name: 'Aisha K.', role: 'Literature Student' },
+            { stars: 5, quote: '"Finished the series in a weekend. Now there\'s a James-shaped hole in my heart."', initials: 'JD', name: 'James D.', role: 'Binge Reader' },
+            { stars: 5, quote: '"The themes are universal but the stories feel deeply personal. Brilliant work."', initials: 'OV', name: 'Olivia V.', role: 'Book Club Member' },
+            { stars: 4.5, quote: '"His live Q&As are just as captivating as his writing. A true storyteller."', initials: 'MW', name: 'Marcus W.', role: 'Event Attendee' },
+            { stars: 5, quote: '"I passed his first book to my mom, my sister, and my coworker. We all cried together."', initials: 'SH', name: 'Sophia H.', role: 'Avid Reader' },
+        ];
+
+        function starsHTML(count) {
+            const full = Math.floor(count);
+            const half = count % 1 >= 0.5;
+            let html = '';
+            for (let i = 0; i < full; i++) html += '<i class="fa-solid fa-star"></i>';
+            if (half) html += '<i class="fa-solid fa-star-half-stroke"></i>';
+            return html;
+        }
+
+        function renderTestimonials(indices) {
+            testimonialTrack.innerHTML = indices.map(i => {
+                const t = allTestimonials[i];
+                return `<div class="testimonial-card-home">
+                    <div class="testimonial-stars">${starsHTML(t.stars)}</div>
+                    <p class="testimonial-quote">${t.quote}</p>
+                    <div class="testimonial-author-info">
+                        <div class="testimonial-avatar">${t.initials}</div>
+                        <div>
+                            <div class="testimonial-name">${t.name}</div>
+                            <div class="testimonial-role">${t.role}</div>
+                        </div>
+                    </div>
+                </div>`;
+            }).join('');
+        }
+
+        function getRandomIndices(exclude = [], count = 3) {
+            const pool = allTestimonials.map((_, i) => i).filter(i => !exclude.includes(i));
+            const shuffled = pool.sort(() => Math.random() - 0.5);
+            return shuffled.slice(0, count);
+        }
+
+        let currentIndices = getRandomIndices([], 3);
+        renderTestimonials(currentIndices);
+
+        setInterval(() => {
+            testimonialTrack.style.opacity = '0';
+            testimonialTrack.style.transform = 'translateY(10px)';
+            setTimeout(() => {
+                currentIndices = getRandomIndices(currentIndices, 3);
+                renderTestimonials(currentIndices);
+                testimonialTrack.style.opacity = '1';
+                testimonialTrack.style.transform = 'translateY(0)';
+            }, 400);
+        }, 20000);
+    }
+
     // ========== SMOOTH ANCHOR LINKS ==========
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
