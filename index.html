@@ -355,7 +355,7 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2024 TheJamesExperience. All rights reserved. Made with <i class="fa-solid fa-heart"></i></p>
+                <p>&copy; 2024 TheJamesExperience. All rights reserved. Made with <i class="fa-solid fa-heart"></i> | <a href="admin-login.html" style="color:var(--text-light);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--primary-color)'" onmouseout="this.style.color='var(--text-light)'"><i class="fa-solid fa-shield-halved"></i> Admin Portal</a></p>
             </div>
         </div>
     </footer>
@@ -367,6 +367,15 @@
     <!-- Toast Notification Container -->
     <div class="toast-container" id="toastContainer"></div>
 
+    <!-- Live Status Banner -->
+    <div id="liveBanner" style="display:none;position:fixed;top:0;left:0;right:0;z-index:9999;background:linear-gradient(135deg,#e74c3c,#c0392b);color:#fff;text-align:center;padding:0.5rem 1rem;font-size:0.8rem;font-weight:700;letter-spacing:0.03em;">
+        <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#fff;margin-right:0.5rem;animation:livePulse 1.2s infinite;"></span>
+        <span id="liveBannerText">LIVE NOW</span>
+        <a href="live.html" style="color:#fff;text-decoration:underline;margin-left:0.75rem;font-size:0.75rem;">Watch Live &rarr;</a>
+        <style>@keyframes livePulse{0%,100%{opacity:1}50%{opacity:0.4}}</style>
+    </div>
     <script src="script.js"></script>
+    <script src="auth.js"></script>
+    <script src="nav-auth.js"></script>
 </body>
 </html>

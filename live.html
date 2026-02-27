@@ -42,37 +42,47 @@
         </div>
     </section>
 
-    <section class="live-now" id="liveNow" style="display: none;">
+    <!-- Live Banner (shown when admin is live) -->
+    <div id="liveBanner" style="display:none;position:fixed;top:0;left:0;right:0;z-index:9999;background:linear-gradient(135deg,#e74c3c,#c0392b);color:#fff;text-align:center;padding:0.5rem 1rem;font-size:0.8rem;font-weight:700;">
+        <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#fff;margin-right:0.5rem;animation:lp 1.2s infinite;"></span>
+        <span id="liveBannerText">LIVE NOW</span>
+        <style>@keyframes lp{0%,100%{opacity:1}50%{opacity:0.4}}</style>
+    </div>
+
+    <section class="live-now" id="liveNow" style="display:none; background:#0f0f1a; padding:2rem 0;">
         <div class="container">
-            <div class="live-indicator">
-                <span class="live-dot"></span>
-                <span class="live-text">LIVE NOW</span>
+            <div class="live-indicator" style="display:flex;align-items:center;gap:0.6rem;margin-bottom:1rem;">
+                <span class="live-dot" style="width:10px;height:10px;border-radius:50%;background:#e74c3c;animation:lp 1.2s infinite;display:inline-block;"></span>
+                <span class="live-text" style="font-weight:800;font-size:0.85rem;color:#e74c3c;letter-spacing:0.1em;">LIVE NOW</span>
+                <span id="livePlatformBadge" style="background:rgba(231,76,60,0.15);border:1px solid rgba(231,76,60,0.3);color:#e74c3c;border-radius:50px;font-size:0.7rem;padding:0.15rem 0.6rem;"></span>
             </div>
+            <h2 id="liveTitle" style="font-family:'Playfair Display',serif;font-size:1.5rem;color:#fff;margin-bottom:0.4rem;"></h2>
+            <p id="liveDesc" style="font-size:0.82rem;color:rgba(255,255,255,0.5);margin-bottom:1.5rem;"></p>
             <div class="live-stream-container">
-                <div class="live-stream-placeholder">
-                    <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <polygon points="10 8 16 12 10 16 10 8" fill="currentColor"></polygon>
-                    </svg>
-                    <h3>Live Stream Active</h3>
-                    <p>Join the conversation now!</p>
+                <div id="liveStreamEmbed" class="live-stream-placeholder" style="background:#1a1a2e;border-radius:12px;overflow:hidden;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;">
+                    <!-- embed or placeholder injected by JS -->
                 </div>
-                <div class="live-chat">
-                    <h4>Live Chat</h4>
-                    <div class="chat-messages" id="chatMessages">
-                        <div class="chat-message">
-                            <strong>Sarah:</strong> So excited for this!
-                        </div>
-                        <div class="chat-message">
-                            <strong>Mike:</strong> Can't wait to hear about the new book!
-                        </div>
+                <div class="live-chat" id="liveChatBox">
+                    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;">
+                        <h4 style="color:#fff;font-size:0.9rem;"><i class="fa-solid fa-comments"></i> Live Chat</h4>
+                        <span id="chatUserBadge" style="font-size:0.68rem;color:rgba(255,255,255,0.4);"></span>
                     </div>
-                    <form class="chat-input-form">
-                        <input type="text" placeholder="Type your message..." class="chat-input">
-                        <button type="submit" class="chat-send-btn">Send</button>
-                    </form>
+                    <div class="chat-messages" id="chatMessages" style="background:#13131f;border-radius:8px;padding:0.75rem;max-height:280px;overflow-y:auto;margin-bottom:0.75rem;"></div>
+                    <div id="chatInputArea"></div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Offline Live Section -->
+    <section id="liveOffline" style="padding:2.5rem 0;background:#f8f4ef;">
+        <div class="container" style="text-align:center;">
+            <div style="display:inline-flex;align-items:center;gap:0.5rem;background:rgba(38,70,83,0.08);border:1px solid rgba(38,70,83,0.12);border-radius:50px;padding:0.35rem 1rem;font-size:0.72rem;font-weight:700;color:rgba(38,70,83,0.5);letter-spacing:0.06em;margin-bottom:1rem;">
+                <span style="width:7px;height:7px;border-radius:50%;background:rgba(38,70,83,0.3);display:inline-block;"></span> NOT LIVE RIGHT NOW
+            </div>
+            <h2 style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:#264653;margin-bottom:0.5rem;">Next Live Session Coming Soon</h2>
+            <p style="font-size:0.85rem;color:rgba(38,70,83,0.6);margin-bottom:1.5rem;">Sign up to get notified the moment James goes live.</p>
+            <a href="user-auth.html?redirect=live.html" class="btn btn-primary" style="display:inline-flex;align-items:center;gap:0.5rem;"><i class="fa-solid fa-bell"></i> Notify Me When Live</a>
         </div>
     </section>
 
@@ -366,7 +376,7 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2024 TheJamesExperience. All rights reserved.</p>
+                <p>&copy; 2024 TheJamesExperience. All rights reserved. | <a href="admin-login.html" style="color:var(--text-light);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--primary-color)'" onmouseout="this.style.color='var(--text-light)'"><i class="fa-solid fa-shield-halved"></i> Admin Portal</a></p>
             </div>
         </div>
     </footer>
@@ -378,6 +388,89 @@
     </button>
 
     <script src="script.js"></script>
+    <script src="auth.js"></script>
+    <script src="nav-auth.js"></script>
     <script src="live.js"></script>
+    <script>
+    (function() {
+        const CHAT_KEY = 'tje_live_chat';
+        const state = AUTH.getLiveState();
+        const user = AUTH.getCurrentUser();
+
+        if (state.isLive) {
+            // Show live banner
+            const banner = document.getElementById('liveBanner');
+            banner.style.display = 'block';
+            document.getElementById('liveBannerText').textContent = '\uD83D\uDD34 LIVE NOW: ' + state.title;
+            document.body.style.paddingTop = '36px';
+            const navbar = document.getElementById('navbar');
+            if (navbar) navbar.style.top = '36px';
+
+            // Show live section, hide offline
+            document.getElementById('liveNow').style.display = 'block';
+            document.getElementById('liveOffline').style.display = 'none';
+
+            // Populate title/desc/platform
+            document.getElementById('liveTitle').textContent = state.title;
+            document.getElementById('liveDesc').textContent = state.description || '';
+            document.getElementById('livePlatformBadge').textContent = state.platform;
+
+            // Stream embed
+            const embedBox = document.getElementById('liveStreamEmbed');
+            if (state.streamUrl) {
+                embedBox.innerHTML = '<iframe src="' + state.streamUrl + '" width="100%" height="100%" frameborder="0" allow="autoplay;encrypted-media" allowfullscreen style="border-radius:12px;"></iframe>';
+                embedBox.style.background = '#000';
+            } else {
+                embedBox.innerHTML = '<div style="text-align:center;color:rgba(255,255,255,0.4);padding:2rem;"><i class="fa-solid fa-tower-broadcast" style="font-size:3rem;margin-bottom:1rem;display:block;"></i><p style="font-size:0.85rem;">Stream is live on ' + state.platform + '.<br>Join there to watch!</p></div>';
+            }
+
+            // Chat
+            const chatKey = CHAT_KEY;
+            function getMessages() { return JSON.parse(localStorage.getItem(chatKey) || '[]'); }
+            function saveMessages(msgs) { localStorage.setItem(chatKey, JSON.stringify(msgs.slice(-100))); }
+            function renderMessages() {
+                const msgs = getMessages();
+                const box = document.getElementById('chatMessages');
+                box.innerHTML = msgs.length === 0
+                    ? '<p style="color:rgba(255,255,255,0.3);font-size:0.75rem;text-align:center;">No messages yet. Be the first!</p>'
+                    : msgs.map(m => '<div style="margin-bottom:0.5rem;font-size:0.8rem;"><strong style="color:#f4a261;">' + m.name + ':</strong> <span style="color:rgba(255,255,255,0.8);">' + m.text + '</span></div>').join('');
+                box.scrollTop = box.scrollHeight;
+            }
+            renderMessages();
+            setInterval(renderMessages, 5000);
+
+            const inputArea = document.getElementById('chatInputArea');
+            if (user) {
+                document.getElementById('chatUserBadge').textContent = 'Signed in as ' + user.name;
+                inputArea.innerHTML = '<form id="chatForm" style="display:flex;gap:0.5rem;"><input type="text" id="chatInput" placeholder="Say something..." style="flex:1;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:8px;padding:0.55rem 0.8rem;font-size:0.82rem;color:#fff;outline:none;font-family:Inter,sans-serif;"><button type="submit" style="background:linear-gradient(135deg,#f4a261,#e76f51);color:#fff;border:none;border-radius:8px;padding:0.55rem 1rem;font-size:0.8rem;font-weight:700;cursor:pointer;font-family:Inter,sans-serif;">Send</button></form>';
+                document.getElementById('chatForm').addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const txt = document.getElementById('chatInput').value.trim();
+                    if (!txt) return;
+                    const msgs = getMessages();
+                    msgs.push({ name: user.name, text: txt, time: Date.now() });
+                    saveMessages(msgs);
+                    document.getElementById('chatInput').value = '';
+                    renderMessages();
+                });
+            } else {
+                inputArea.innerHTML = '<div style="background:rgba(244,162,97,0.08);border:1px solid rgba(244,162,97,0.2);border-radius:8px;padding:0.75rem;text-align:center;font-size:0.78rem;color:rgba(255,255,255,0.5);"><i class="fa-solid fa-lock" style="color:#f4a261;"></i> <a href="user-auth.html?redirect=live.html" style="color:#f4a261;font-weight:600;">Sign in</a> or <a href="user-auth.html?tab=signup&redirect=live.html" style="color:#f4a261;font-weight:600;">create a free account</a> to chat</div>';
+            }
+        } else {
+            document.getElementById('liveNow').style.display = 'none';
+            document.getElementById('liveOffline').style.display = 'block';
+        }
+
+        // RSVP / Notify buttons — require login
+        document.querySelectorAll('.btn-primary[onclick*="rsvp"], .btn-secondary[onclick*="calendar"], .notify-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                if (!AUTH.getCurrentUser()) {
+                    e.preventDefault(); e.stopImmediatePropagation();
+                    window.location.href = 'user-auth.html?redirect=live.html';
+                }
+            }, true);
+        });
+    })();
+    </script>
 </body>
 </html>

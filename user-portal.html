@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account - TheJamesExperience</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --primary: #f4a261;
+            --secondary: #e76f51;
+            --dark: #264653;
+            --bg: #fdf8f3;
+            --white: #ffffff;
+            --border: rgba(38,70,83,0.1);
+            --text: #1a1a2e;
+            --muted: rgba(26,26,46,0.5);
+            --live: #e74c3c;
+            --green: #27ae60;
+        }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+        /* ---- Top Nav ---- */
+        .portal-nav {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            padding: 0.85rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-brand {
+            display: flex; align-items: center; gap: 0.5rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem; font-weight: 900; color: var(--text);
+            text-decoration: none;
+        }
+        .nav-brand i { color: var(--primary); }
+        .nav-brand span { color: var(--primary); }
+        .nav-right { display: flex; align-items: center; gap: 0.75rem; }
+        .nav-back {
+            display: flex; align-items: center; gap: 0.4rem;
+            color: var(--muted); text-decoration: none; font-size: 0.8rem;
+            padding: 0.4rem 0.8rem; border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .nav-back:hover { background: rgba(38,70,83,0.06); color: var(--text); }
+        .btn-logout {
+            display: flex; align-items: center; gap: 0.4rem;
+            background: none; border: 1.5px solid var(--border);
+            color: var(--muted); border-radius: 8px;
+            padding: 0.4rem 0.9rem; font-size: 0.8rem; font-weight: 600;
+            cursor: pointer; font-family: 'Inter', sans-serif;
+            transition: border-color 0.2s, color 0.2s;
+        }
+        .btn-logout:hover { border-color: var(--live); color: var(--live); }
+
+        /* ---- Layout ---- */
+        .portal-wrap {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 1.5rem;
+            align-items: start;
+        }
+
+        /* ---- Sidebar ---- */
+        .sidebar {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            position: sticky;
+            top: 70px;
+        }
+        .profile-block {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 1.5rem 1rem;
+            text-align: center;
+            color: #fff;
+        }
+        .avatar-circle {
+            width: 60px; height: 60px;
+            background: rgba(255,255,255,0.25);
+            border: 2px solid rgba(255,255,255,0.5);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.3rem; font-weight: 700;
+            margin: 0 auto 0.6rem;
+        }
+        .profile-name { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.15rem; }
+        .profile-email { font-size: 0.68rem; opacity: 0.8; }
+        .profile-joined { font-size: 0.65rem; opacity: 0.65; margin-top: 0.25rem; }
+        .sidebar-nav { padding: 0.5rem 0; }
+        .s-nav-item {
+            display: flex; align-items: center; gap: 0.65rem;
+            padding: 0.65rem 1.1rem;
+            font-size: 0.82rem; font-weight: 500; color: var(--muted);
+            cursor: pointer; border: none; background: none;
+            width: 100%; text-align: left; font-family: 'Inter', sans-serif;
+            transition: color 0.2s, background 0.2s;
+            position: relative;
+        }
+        .s-nav-item:hover { color: var(--text); background: rgba(38,70,83,0.04); }
+        .s-nav-item.active { color: var(--primary); background: rgba(244,162,97,0.08); font-weight: 600; }
+        .s-nav-item.active::before {
+            content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+            width: 3px; background: var(--primary); border-radius: 0 3px 3px 0;
+        }
+        .s-nav-item i { width: 16px; text-align: center; font-size: 0.8rem; }
+        .sidebar-divider { height: 1px; background: var(--border); margin: 0.4rem 0; }
+        .s-nav-logout {
+            display: flex; align-items: center; gap: 0.65rem;
+            padding: 0.65rem 1.1rem;
+            font-size: 0.82rem; font-weight: 500; color: var(--muted);
+            cursor: pointer; border: none; background: none;
+            width: 100%; text-align: left; font-family: 'Inter', sans-serif;
+            transition: color 0.2s;
+        }
+        .s-nav-logout:hover { color: var(--live); }
+
+        /* ---- Main Content ---- */
+        .main-content { min-width: 0; }
+        .section-panel { display: none; }
+        .section-panel.active { display: block; }
+
+        .panel-header { margin-bottom: 1.5rem; }
+        .panel-title { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 900; margin-bottom: 0.2rem; }
+        .panel-sub { font-size: 0.78rem; color: var(--muted); }
+
+        .card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        .card-title { font-size: 0.78rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+        .card-title i { color: var(--primary); }
+
+        /* ---- Home ---- */
+        .welcome-banner {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 14px;
+            padding: 1.5rem;
+            color: #fff;
+            margin-bottom: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .welcome-banner::after {
+            content: '\f02d';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            right: 1.5rem; top: 50%; transform: translateY(-50%);
+            font-size: 4rem; opacity: 0.15;
+        }
+        .welcome-banner h2 { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 900; margin-bottom: 0.3rem; }
+        .welcome-banner p { font-size: 0.8rem; opacity: 0.85; }
+
+        .quick-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1rem; }
+        .quick-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1rem;
+            text-decoration: none;
+            color: var(--text);
+            transition: box-shadow 0.2s, border-color 0.2s;
+            display: flex; align-items: center; gap: 0.75rem;
+        }
+        .quick-card:hover { box-shadow: 0 4px 16px rgba(38,70,83,0.1); border-color: rgba(244,162,97,0.3); }
+        .quick-icon {
+            width: 38px; height: 38px;
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.9rem; flex-shrink: 0;
+        }
+        .quick-icon.orange { background: rgba(244,162,97,0.15); color: var(--primary); }
+        .quick-icon.red { background: rgba(231,76,60,0.1); color: var(--live); }
+        .quick-icon.blue { background: rgba(38,70,83,0.08); color: var(--dark); }
+        .quick-icon.green { background: rgba(39,174,96,0.1); color: var(--green); }
+        .quick-label { font-size: 0.78rem; font-weight: 600; }
+        .quick-sub { font-size: 0.66rem; color: var(--muted); }
+
+        /* ---- Live ---- */
+        .live-check-box {
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .live-check-box.online { background: rgba(231,76,60,0.06); border: 1px solid rgba(231,76,60,0.2); }
+        .live-check-box.offline { background: rgba(38,70,83,0.04); border: 1px solid var(--border); }
+        .live-dot-user { width: 12px; height: 12px; border-radius: 50%; display: inline-block; margin-right: 0.4rem; }
+        .live-dot-user.on { background: var(--live); animation: lpu 1.2s infinite; }
+        .live-dot-user.off { background: rgba(38,70,83,0.3); }
+        @keyframes lpu { 0%,100%{opacity:1}50%{opacity:0.4} }
+        .live-status-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.75rem; display: flex; align-items: center; justify-content: center; }
+        .live-title-user { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 900; margin-bottom: 0.3rem; }
+        .live-platform-user { font-size: 0.75rem; color: var(--muted); margin-bottom: 1rem; }
+        .btn-watch {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: linear-gradient(135deg, var(--live), #c0392b);
+            color: #fff; border: none; border-radius: 10px;
+            padding: 0.7rem 1.5rem; font-size: 0.85rem; font-weight: 700;
+            cursor: pointer; text-decoration: none;
+            font-family: 'Inter', sans-serif;
+            transition: opacity 0.2s;
+        }
+        .btn-watch:hover { opacity: 0.9; }
+        .offline-msg { font-size: 0.82rem; color: var(--muted); }
+        .offline-title { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
+
+        /* ---- Profile ---- */
+        .profile-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; }
+        .form-group { margin-bottom: 0; }
+        .form-group label { display: block; font-size: 0.7rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.3rem; }
+        .form-group input {
+            width: 100%; border: 1.5px solid var(--border); border-radius: 8px;
+            padding: 0.6rem 0.85rem; font-size: 0.85rem; color: var(--text);
+            outline: none; font-family: 'Inter', sans-serif;
+            transition: border-color 0.2s; background: var(--bg);
+        }
+        .form-group input:focus { border-color: var(--primary); background: #fff; }
+        .form-group input[disabled] { opacity: 0.5; cursor: not-allowed; }
+        .form-group.full { grid-column: 1 / -1; }
+        .btn-save {
+            margin-top: 1rem;
+            display: inline-flex; align-items: center; gap: 0.45rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #fff; border: none; border-radius: 8px;
+            padding: 0.6rem 1.3rem; font-size: 0.82rem; font-weight: 700;
+            cursor: pointer; font-family: 'Inter', sans-serif;
+        }
+        .save-success {
+            display: none; align-items: center; gap: 0.4rem;
+            color: var(--green); font-size: 0.78rem; margin-top: 0.5rem;
+        }
+        .save-success.show { display: flex; }
+
+        /* ---- Responsive ---- */
+        @media (max-width: 700px) {
+            .portal-wrap { grid-template-columns: 1fr; }
+            .sidebar { position: static; }
+            .profile-form-grid { grid-template-columns: 1fr; }
+            .quick-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Nav -->
+    <nav class="portal-nav">
+        <a href="index.html" class="nav-brand">
+            <i class="fa-solid fa-feather-pointed"></i>
+            The<span>James</span>Experience
+        </a>
+        <div class="nav-right">
+            <a href="index.html" class="nav-back"><i class="fa-solid fa-arrow-left"></i> Back to site</a>
+            <button class="btn-logout" id="topLogoutBtn"><i class="fa-solid fa-right-from-bracket"></i> Log Out</button>
+        </div>
+    </nav>
+
+    <div class="portal-wrap">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="profile-block">
+                <div class="avatar-circle" id="sideAvatar">--</div>
+                <div class="profile-name" id="sideName">--</div>
+                <div class="profile-email" id="sideEmail">--</div>
+                <div class="profile-joined" id="sideJoined"></div>
+            </div>
+            <nav class="sidebar-nav">
+                <button class="s-nav-item active" data-panel="home">
+                    <i class="fa-solid fa-house"></i> Home
+                </button>
+                <button class="s-nav-item" data-panel="live">
+                    <i class="fa-solid fa-tower-broadcast"></i> Live Events
+                </button>
+                <button class="s-nav-item" data-panel="profile">
+                    <i class="fa-solid fa-user-pen"></i> My Profile
+                </button>
+                <div class="sidebar-divider"></div>
+                <button class="s-nav-logout" id="sideLogoutBtn">
+                    <i class="fa-solid fa-right-from-bracket"></i> Log Out
+                </button>
+            </nav>
+        </aside>
+
+        <!-- Main -->
+        <main class="main-content">
+
+            <!-- HOME -->
+            <div class="section-panel active" id="panel-home">
+                <div class="welcome-banner">
+                    <h2 id="welcomeName">Welcome back!</h2>
+                    <p>You're part of TheJamesExperience community. Here's what's happening.</p>
+                </div>
+
+                <div class="quick-grid">
+                    <a href="live.html" class="quick-card">
+                        <div class="quick-icon red"><i class="fa-solid fa-tower-broadcast"></i></div>
+                        <div>
+                            <div class="quick-label">Live Events</div>
+                            <div class="quick-sub" id="liveQuickStatus">Check live status</div>
+                        </div>
+                    </a>
+                    <a href="blog.html" class="quick-card">
+                        <div class="quick-icon orange"><i class="fa-solid fa-newspaper"></i></div>
+                        <div>
+                            <div class="quick-label">Blog</div>
+                            <div class="quick-sub">Latest posts</div>
+                        </div>
+                    </a>
+                    <a href="community.html" class="quick-card">
+                        <div class="quick-icon blue"><i class="fa-solid fa-users"></i></div>
+                        <div>
+                            <div class="quick-label">Community</div>
+                            <div class="quick-sub">Forums & discussions</div>
+                        </div>
+                    </a>
+                    <a href="books.html" class="quick-card">
+                        <div class="quick-icon green"><i class="fa-solid fa-book-open"></i></div>
+                        <div>
+                            <div class="quick-label">Books</div>
+                            <div class="quick-sub">Browse all titles</div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="card">
+                    <div class="card-title"><i class="fa-solid fa-circle-info"></i> Your Account</div>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;">
+                        <div style="font-size:0.78rem;color:var(--muted);">Member since</div>
+                        <div style="font-size:0.78rem;font-weight:600;" id="infoJoined">--</div>
+                        <div style="font-size:0.78rem;color:var(--muted);">Email</div>
+                        <div style="font-size:0.78rem;font-weight:600;" id="infoEmail">--</div>
+                        <div style="font-size:0.78rem;color:var(--muted);">Account type</div>
+                        <div style="font-size:0.78rem;font-weight:600;color:var(--primary);">Community Member</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LIVE -->
+            <div class="section-panel" id="panel-live">
+                <div class="panel-header">
+                    <div class="panel-title">Live Events</div>
+                    <div class="panel-sub">Watch live sessions and join the chat</div>
+                </div>
+                <div class="card">
+                    <div id="liveStatusBlock"></div>
+                </div>
+                <div class="card">
+                    <div class="card-title"><i class="fa-solid fa-calendar"></i> Upcoming Events</div>
+                    <p style="font-size:0.8rem;color:var(--muted);">Check the <a href="live.html" style="color:var(--primary);font-weight:600;">Live Events page</a> to see all upcoming sessions and RSVP.</p>
+                </div>
+            </div>
+
+            <!-- PROFILE -->
+            <div class="section-panel" id="panel-profile">
+                <div class="panel-header">
+                    <div class="panel-title">My Profile</div>
+                    <div class="panel-sub">Update your display name</div>
+                </div>
+                <div class="card">
+                    <div class="card-title"><i class="fa-solid fa-user"></i> Profile Details</div>
+                    <div class="profile-form-grid">
+                        <div class="form-group">
+                            <label>Display Name</label>
+                            <input type="text" id="editName" placeholder="Your name">
+                        </div>
+                        <div class="form-group">
+                            <label>Email (cannot change)</label>
+                            <input type="email" id="editEmail" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label>New Password <span style="color:var(--muted);font-weight:400;">(leave blank to keep current)</span></label>
+                            <input type="password" id="editPassword" placeholder="New password">
+                        </div>
+                        <div class="form-group">
+                            <label>Confirm New Password</label>
+                            <input type="password" id="editPasswordConfirm" placeholder="Confirm new password">
+                        </div>
+                    </div>
+                    <button class="btn-save" id="saveProfileBtn"><i class="fa-solid fa-floppy-disk"></i> Save Changes</button>
+                    <div class="save-success" id="saveSuccess"><i class="fa-solid fa-circle-check"></i> Profile updated!</div>
+                    <div class="save-success" id="saveError" style="color:#e74c3c;"><i class="fa-solid fa-circle-exclamation"></i> <span id="saveErrorText"></span></div>
+                </div>
+
+                <div class="card" style="border-color:rgba(231,76,60,0.2);">
+                    <div class="card-title" style="color:#e74c3c;"><i class="fa-solid fa-triangle-exclamation"></i> Danger Zone</div>
+                    <p style="font-size:0.78rem;color:var(--muted);margin-bottom:0.85rem;">Sign out from your account on this device.</p>
+                    <button class="btn-logout" id="dangerLogoutBtn" style="color:#e74c3c;border-color:rgba(231,76,60,0.3);">
+                        <i class="fa-solid fa-right-from-bracket"></i> Log Out
+                    </button>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+<script src="auth.js"></script>
+<script>
+    // Guard — must be logged in
+    const user = AUTH.getCurrentUser();
+    if (!user) window.location.href = 'user-auth.html?redirect=user-portal.html';
+
+    // ---- Populate sidebar & home ----
+    function populate() {
+        const u = AUTH.getCurrentUser();
+        if (!u) return;
+        document.getElementById('sideAvatar').textContent = u.avatar;
+        document.getElementById('sideName').textContent = u.name;
+        document.getElementById('sideEmail').textContent = u.email;
+        const joined = new Date(u.joinedAt);
+        document.getElementById('sideJoined').textContent = 'Joined ' + joined.toLocaleDateString('en-US', {month:'short', year:'numeric'});
+        document.getElementById('welcomeName').textContent = 'Welcome back, ' + u.name.split(' ')[0] + '!';
+        document.getElementById('infoJoined').textContent = joined.toLocaleDateString('en-US', {month:'long', day:'numeric', year:'numeric'});
+        document.getElementById('infoEmail').textContent = u.email;
+        document.getElementById('editName').value = u.name;
+        document.getElementById('editEmail').value = u.email;
+
+        // Live quick status
+        const state = AUTH.getLiveState();
+        document.getElementById('liveQuickStatus').textContent = state.isLive ? '🔴 LIVE NOW: ' + state.title : 'No stream right now';
+    }
+    populate();
+
+    // ---- Live panel ----
+    function renderLive() {
+        const state = AUTH.getLiveState();
+        const block = document.getElementById('liveStatusBlock');
+        if (state.isLive) {
+            block.innerHTML = `
+                <div class="live-check-box online">
+                    <div class="live-status-label"><span class="live-dot-user on"></span> Live Right Now</div>
+                    <div class="live-title-user">${state.title}</div>
+                    <div class="live-platform-user"><i class="fa-solid fa-satellite-dish"></i> ${state.platform}${state.description ? ' · ' + state.description : ''}</div>
+                    <a href="live.html" class="btn-watch"><i class="fa-solid fa-play"></i> Join the Live Stream</a>
+                </div>`;
+        } else {
+            block.innerHTML = `
+                <div class="live-check-box offline">
+                    <div class="live-status-label"><span class="live-dot-user off"></span> Not Live</div>
+                    <div class="offline-title">No active stream</div>
+                    <p class="offline-msg">Check back soon! You'll see the live stream here the moment James goes live.</p>
+                </div>`;
+        }
+    }
+
+    // ---- Navigation ----
+    const navBtns = document.querySelectorAll('.s-nav-item[data-panel]');
+    const panels = document.querySelectorAll('.section-panel');
+    navBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            navBtns.forEach(b => b.classList.remove('active'));
+            panels.forEach(p => p.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('panel-' + btn.dataset.panel).classList.add('active');
+            if (btn.dataset.panel === 'live') renderLive();
+        });
+    });
+
+    // ---- Save profile ----
+    document.getElementById('saveProfileBtn').addEventListener('click', () => {
+        const name = document.getElementById('editName').value.trim();
+        const pw = document.getElementById('editPassword').value;
+        const pwConf = document.getElementById('editPasswordConfirm').value;
+        document.getElementById('saveSuccess').classList.remove('show');
+        document.getElementById('saveError').classList.remove('show');
+
+        if (!name) { showErr('Name cannot be empty.'); return; }
+        if (pw && pw !== pwConf) { showErr('Passwords do not match.'); return; }
+        if (pw && pw.length < 6) { showErr('Password must be at least 6 characters.'); return; }
+
+        const users = AUTH.getUsers();
+        const idx = users.findIndex(u => u.id === AUTH.getCurrentUser().id);
+        if (idx === -1) return;
+        users[idx].name = name;
+        users[idx].avatar = name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+        if (pw) users[idx].password = pw;
+        AUTH.saveUsers(users);
+        localStorage.setItem(AUTH.KEYS.USER_SESSION, JSON.stringify(users[idx]));
+        document.getElementById('saveSuccess').classList.add('show');
+        document.getElementById('editPassword').value = '';
+        document.getElementById('editPasswordConfirm').value = '';
+        populate();
+    });
+
+    function showErr(msg) {
+        document.getElementById('saveErrorText').textContent = msg;
+        document.getElementById('saveError').classList.add('show');
+    }
+
+    // ---- Logout ----
+    function logout() {
+        AUTH.logoutUser();
+        window.location.href = 'index.html';
+    }
+    document.getElementById('topLogoutBtn').addEventListener('click', logout);
+    document.getElementById('sideLogoutBtn').addEventListener('click', logout);
+    document.getElementById('dangerLogoutBtn').addEventListener('click', logout);
+
+    // Auto-refresh live status every 15s
+    setInterval(populate, 15000);
+</script>
+</body>
+</html>
