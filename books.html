@@ -8,25 +8,29 @@
     <link rel="stylesheet" href="pages.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <div class="logo">TheJamesExperience</div>
-            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+            <a href="index.html" class="logo">
+                <span class="logo-icon"><i class="fa-solid fa-feather-pointed"></i></span>
+                <span class="logo-text">TheJames<span class="logo-accent">Experience</span></span>
+            </a>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="books.html" class="active">Books</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="live.html">Live Events</a></li>
-                <li><a href="community.html">Community</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+                <li><a href="about.html"><i class="fa-solid fa-user-pen"></i> About</a></li>
+                <li><a href="books.html" class="active"><i class="fa-solid fa-book-open"></i> Books</a></li>
+                <li><a href="blog.html"><i class="fa-solid fa-newspaper"></i> Blog</a></li>
+                <li><a href="live.html"><i class="fa-solid fa-tower-broadcast"></i> Live</a></li>
+                <li><a href="community.html"><i class="fa-solid fa-users"></i> Community</a></li>
+                <li><a href="contact.html" class="nav-cta"><i class="fa-solid fa-paper-plane"></i> Contact</a></li>
             </ul>
         </div>
     </nav>
